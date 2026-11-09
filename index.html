@@ -61,10 +61,11 @@ form.addEventListener('submit',e=>{
 });
 window.addEventListener('message',e=>{
  // O Google Apps Script entrega a resposta por uma janela incorporada.
- if(e.source!==$('form-frame').contentWindow)return;
+ // A resposta do Apps Script pode vir de um iframe interno do Google.
+ // Validamos pelo identificador único do envio em vez do frame de origem.
  const data=e.data;if(!data||data.type!=='bl-exp-form-result'||data.nonce!==nonce)return;
  clearTimeout(timer);sending=false;submit.disabled=false;submit.textContent='Enviar solicitação de ativação ↗';
- if(data.status==='ok'){msg('Solicitação recebida! Nossa equipe poderá entrar em contato pelo e-mail informado.','success');form.reset()}else{msg('Não foi possível confirmar o envio. Por favor, tente novamente ou entre em contato por e-mail.','error')}
+ if(data.status==='ok'){msg('Solicitação registrada! Nossa equipe poderá entrar em contato pelo e-mail informado.','success');form.reset()}else if(data.status==='registrado'){msg('Solicitação registrada com sucesso. O aviso por e-mail está indisponível, mas nossa equipe poderá consultar seu pedido.','success');form.reset()}else{msg('Não foi possível confirmar o registro. Entre em contato por e-mail antes de tentar novamente.','error')}
 });
 })();
 </script>
