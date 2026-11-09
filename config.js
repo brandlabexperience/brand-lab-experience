@@ -1,5 +1,4 @@
 // BRAND LAB EXPERIENCE — CONFIGURAÇÃO DO FORMULÁRIO
-// Após criar e publicar o Google Apps Script da pasta integracao-email,
-// cole abaixo a URL da implantação terminada em /exec.
-// Sem essa URL, o site NÃO afirma ter enviado uma cotação.
-window.BL_EXP_FORM_ENDPOINT = '';
+// URL pública da implantação do Google Apps Script.
+// O formulário só é enviado quando este endereço está configurado.
+window.BL_EXP_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxG-9PUINnqZ1Cl-5-0OCSQCVU2MXC3BWGx2AEwZHw8fNgniIWuKxzr4Px-OVGwrNKmtA/exec';
